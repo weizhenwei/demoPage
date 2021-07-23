@@ -88,6 +88,17 @@ $(document).ready(function(){
 		console.log("e:", e);
 		a.append("<div id=" + e + ' class="mega-menu-item">' + href + '</div>');
 	});
+	
+	
+	$(".header-nav-folder-title[href^='/mega-']").each(function(){
+		console.log("found element:", $(this));
+		var e=$(this).attr("href").slice(6);
+		var a=$(this).closest("#header").next();
+		var href = $(this).attr("href");
+		console.log("href:", href);
+		console.log("e:", e);
+		a.append("<div id=" + e + ' class="mega-menu-item">' + href + '</div>');
+	});
 
 })
  
