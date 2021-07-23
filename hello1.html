@@ -64,15 +64,47 @@ window.__preloadedData =
   </div>
 </header>
         
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>       
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>       
 <script>
 $(document).ready(function(){
-    debugger;
-var folder_click_through = 'false';
+    debugger
 
-$("#header").after('<div id="mega-container"></div>');$('.header-nav-folder-title[href^="/mega-"]').each(function(){var e=$(this).attr("href").slice(6),a=$(this).closest("#header").next();$(this).parent().addClass("mega-menu"),a.append("<div id="+e+' class="mega-menu-item"></div>');if(folder_click_through==='true'){$(this).click(function(){window.location.href='/'+e})}
-$("#"+e).load("/mega-page-"+e+" #page .page-section",function(){window.Squarespace.initializeLayoutBlocks(Y,Y.one("#"+e))}),$(this).parent().hover(function(){a.find("#"+e).addClass("hover")},function(){a.find("#"+e).removeClass("hover")})});function paddingCalc(){$('.mega-menu-item').each(function(){var paddingTop=$('#header').height();$(this).css('padding-top',paddingTop)})}
-$(window).on("resize",function(e){paddingCalc()});paddingCalc()})
+	var folder_click_through = 'false';
+
+	$("#header").after('<div id="mega-container"></div>');
+
+	$('.header-nav-folder-title[href^="/mega-"]').each(function(){
+		var e=$(this).attr("href").slice(6),a=$(this).closest("#header").next();
+		$(this).parent().addClass("mega-menu"),a.append("<div id="+e+' class="mega-menu-item"></div>');
+		if(folder_click_through==='true'){
+			$(this).click(function(){window.location.href='/'+e})
+		}
+
+		$("#"+e).load("/mega-page-"+e+" #page .page-section",
+			function(){
+				window.Squarespace.initializeLayoutBlocks(Y,Y.one("#"+e))
+			}
+		),
+		$(this).parent().hover(
+			function(){
+				a.find("#"+e).addClass("hover")
+			},
+			function(){
+				a.find("#"+e).removeClass("hover")
+			}
+		)
+	});
+
+	function paddingCalc(){
+		$('.mega-menu-item').each(function(){var paddingTop=$('#header').height();$(this).css('padding-top',paddingTop)})
+	}
+	$(window).on("resize",
+		function(e){paddingCalc()}
+	);
+
+	paddingCalc()
+})
+ 
 </script>   
         
         
