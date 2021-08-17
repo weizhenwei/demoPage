@@ -235,6 +235,9 @@ $(document).ready(function(){
 function createiFrame() {
     var iframe = document.createElement("iframe");
 	iframe.src="https://baz.grouphour.com/client/native/blank.html";
+	iframe.width = "800";
+	iframe.height = "600";
+	
 	document.body.appendChild(iframe);
 }
 </script>
@@ -260,7 +263,7 @@ function createiFrame() {
 -->
 
 
-<div style="display:flex; margin-right:20px;">
+<div style="display:flex; margin-right:20px;width: 1024px; height: 768px;">
 	<h5 width= 100> Hello, iframe. </h5>
 	<div style="display:flex; flex-direction:column; height:30px;">
 		Hello, inner div.
@@ -271,9 +274,9 @@ function createiFrame() {
 	</div>
 </div>
 
-<!--	
-<p> ----------------------------------this is divide line------------------------------------------------ </p>
 
+<p> ----------------------------------this is divide line------------------------------------------------ </p>
+<!--	
 <iframe src="https://www.baidu.com" width= 800 height = 600> </iframe>
 -->
     </body>
