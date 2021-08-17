@@ -231,8 +231,15 @@ $(document).ready(function(){
                 onclick="window.open('https://baz.grouphour.com/client/native/blank.html')">openBaz</button></br>
         <button style="cursor:pointer;"
                 onclick="window.open()">openBlank</button></br>
+<script>
+function createiFrame() {
+    var iframe = document.createElement("iframe");
+	iframe.src="https://baz.grouphour.com/client/native/blank.html";
+	document.body.appendChild(iframe);
+}
+</script>
         <button style="cursor:pointer;"
-                onclick="var iframe = document.createElement("iframe"); iframe.src='https://baz.grouphour.com/client/native/blank.html'; document.body.appendChild(iframe);">
+                onclick="createiFrame()">
 		createIframe
         </button></br>
 <!--        
