@@ -25,6 +25,22 @@ $("input").change(function(){
 	$("img").attr("src", window.URL.createObjectURL(files[0]));
 });
 
+function image2Base64(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, img.width, img.height);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL;
+}
+
+$("img").load((event) => {
+  var base64 = image2Base64(event.target);
+  console.log("image is:", event.target);
+  console.log("base64 is:", base64);
+});
+
 </script>
 </body>
 </html>
