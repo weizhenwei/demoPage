@@ -45,7 +45,7 @@ function image2Base64(img) {
     return dataURL;
 }
 
-$("img").load((event) => {
+$("src_img").load((event) => {
   var base64 = image2Base64(event.target);
   console.log("image is:", event.target);
   console.log("base64 is:", base64); 
