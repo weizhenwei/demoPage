@@ -10,14 +10,14 @@
 
 <div>
  <!--
- <img="src_image" 
+ <img
       style="width: 200px;height:200px;border-radius: 100%"
       src="https://img2018.cnblogs.com/blog/1195302/201811/1195302-20181128163006342-890300325.jpg"/>
   -->
-  <img id="src_image" style="width: 400px; height:300px; border-radius:10%; border:solid 1px red;"/>
+  <img id="src_img" style="width: 400px; height:300px; border-radius:10%; border:solid 1px red;"/>
 </div>
 
-<input type="file"  id="input"/ >
+<input type="file" id="input"/ >
 	
 <div>
  <!--
@@ -45,7 +45,7 @@ function image2Base64(img) {
     return dataURL;
 }
 
-$("src_img").load((event) => {
+$("#src_img").load((event) => {
   var base64 = image2Base64(event.target);
   console.log("image is:", event.target);
   console.log("base64 is:", base64); 
