@@ -10,19 +10,29 @@
 
 <div>
  <!--
- <img
+ <img="src_image" 
       style="width: 200px;height:200px;border-radius: 100%"
       src="https://img2018.cnblogs.com/blog/1195302/201811/1195302-20181128163006342-890300325.jpg"/>
   -->
-  <img style="width: 400px; height:300px; border-radius:10%; border:solid 1px red;"/>
+  <img id="src_image" style="width: 400px; height:300px; border-radius:10%; border:solid 1px red;"/>
 </div>
 
 <input type="file"  id="input"/ >
+	
+<div>
+ <!--
+ <img="src_img" 
+      style="width: 200px;height:200px;border-radius: 100%"
+      src="https://img2018.cnblogs.com/blog/1195302/201811/1195302-20181128163006342-890300325.jpg"/>
+  -->
+  <img id="dst_img" style="width: 400px; height:300px; border-radius:10%; border:solid 1px red;"/>
+</div>
+
 <script type="text/javascript">
 
 $("input").change(function(){
 	var files = document.getElementById('input').files  
-	$("img").attr("src", window.URL.createObjectURL(files[0]));
+	$("#src_img").attr("src", window.URL.createObjectURL(files[0]));
 });
 
 function image2Base64(img) {
@@ -38,7 +48,8 @@ function image2Base64(img) {
 $("img").load((event) => {
   var base64 = image2Base64(event.target);
   console.log("image is:", event.target);
-  console.log("base64 is:", base64);
+  console.log("base64 is:", base64); 
+  $("#dst_img").attr("src", base64);
 });
 
 </script>
