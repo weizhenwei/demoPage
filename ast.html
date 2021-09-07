@@ -8,7 +8,8 @@
 <script src="https://weizhenwei.github.io/demoPage/ast/escodegen.browser.2.0.0.js"></script>
 <script src="https://weizhenwei.github.io/demoPage/ast/estraverse.browser.5.2.0.js"></script>
 <script src="https://weizhenwei.github.io/demoPage/ast/esprima.browser.4.0.1.js"></script>
-
+<script src="https://weizhenwei.github.io/demoPage/ast/acorn.browser.8.4.1.js"></script>
+	
 <P>source code:</p>
 <div>
 <textarea id="srcArea" style="width:400px; height:300px;">
@@ -31,6 +32,9 @@ window.onload = function() {
     srcBtn.addEventListener('click', function (e) {
         var srcCode = document.getElementById('srcArea').value;
 	console.log("sourceJS:", srcCode);
+
+	    if (0) {
+		    
 	let ast = esprima.parseScript(srcCode, {
           jsx: false,
           range: false,
@@ -39,11 +43,16 @@ window.onload = function() {
           tokens: false,
           comment: false
 	})
+	}
+
+        let ast = acorn.parse(srcCode, {ecmaVersion: 2020})
+        console.log("acorn ast:", ast);
 
 	console.log("esprima ast:", ast);
 
 	estraverse.replace(ast, {
 	  leave(node, parent) {
+		console.log("node in traverse:", node);
 	  }
 	});
 	console.log("estraverse ast:", ast);
