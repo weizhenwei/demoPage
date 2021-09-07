@@ -38,8 +38,9 @@ window.onload = function() {
         var val = document.getElementById('text').value;
         receiver.postMessage("Hello "+val+"！", "https://weizhenwei.github.io");
         
+        console.log("new window handler:", newWindow);
         if (newWindow) {
-            receiver.postMessage("Hello "+val+"！", "https://weizhenwei.github.io");
+            newWindow.postMessage("Hello "+val+"！", "https://weizhenwei.github.io");
         }
     });
 }
