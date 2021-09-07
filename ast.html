@@ -28,7 +28,36 @@ console.log(a);
 <textarea id="dstArea" style="width:400px; height:300px;">
 </textarea>
 </div>
-	
+
+<script type="module">
+  import { start } from "https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking/_app/start-c7077596.js";
+  const target = document.querySelector('#svelte-zkzzsx');
+  target.removeAttribute('id');
+  start({
+	target,
+	paths: {"base":"/interactive/2021","assets":"https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking"},
+	session: {},
+	host: location.host,
+	route: false,
+	spa: false,
+	trailing_slash: "never",
+	hydrate: {
+		status: 200,
+		error: null,
+		nodes: [
+			import("https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking/_app/pages/__layout.svelte-b4982ce8.js"),
+			import("https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking/_app/pages/embeds/[type]-dashboard/index.html.svelte-c20d527a.js")
+		],
+		page: {
+			host: location.host, // TODO this is redundant
+			path: "/embeds/spotlight-dashboard.html",
+			query: new URLSearchParams(""),
+			params: {"type":"spotlight"}
+		}
+	}
+  });
+</script>
+
 <script type="text/javascript">
 window.onload = function() {
     var srcBtn = document.getElementById('parseCode');
