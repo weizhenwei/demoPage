@@ -9,55 +9,53 @@
 <script src="https://weizhenwei.github.io/demoPage/ast/estraverse.browser.5.2.0.js"></script>
 <script src="https://weizhenwei.github.io/demoPage/ast/esprima.browser.4.0.1.js"></script>
 
+<P>source code:</p>
 <div>
- <!--
- <img
-      style="width: 200px;height:200px;border-radius: 100%"
-      src="https://img2018.cnblogs.com/blog/1195302/201811/1195302-20181128163006342-890300325.jpg"/>
-  -->
-  <img id="src_img" style="width: 400px; height:300px; border-radius:10%; border:solid 1px red;"/>
+<textarea id="srcArea">
+var a = 1; console.log(a);
+</textarea>
 </div>
 
-<input type="file" id="input" style="margin-top:40px; margin-bottom:40px;"/ >
+<button id="parseCode">parse code</button>
+
+<P>paresed code:</p>
+
+<div>
+<textarea id="dstArea">
+</textarea>
+</div>
 	
-<div>
- <!--
- <img="src_img" 
-      style="width: 200px;height:200px;border-radius: 100%"
-      src="https://img2018.cnblogs.com/blog/1195302/201811/1195302-20181128163006342-890300325.jpg"/>
-
-  <img id="dst_img" style="width: 400px; height:300px; border-radius:10%; border:solid 1px red;"/>
-	  -->
-</div>
-
 <script type="text/javascript">
 window.onload = function() {
-  // let sourceJS = "import('https://weizhenwei.github.io/demoPage/test.js'); var a = 1; console.log(a);";
-  let sourceJS = "var a = 1; console.log(a);";
-  console.log("sourceJS:", sourceJS);
+    var srcBtn = document.getElementById('parseCode');
+    srcBtn.addEventListener('click', function (e) {
+        var srcCode = document.getElementById('srcArea').innerHTML;
+	console.log("sourceJS:", srcCode);
+	let ast = esprima.parseScript(srcCode, {
+          jsx: false,
+          range: false,
+          loc: false,
+          tolerant: true,
+          tokens: false,
+          comment: false
+	})
 
-  let ast = esprima.parseScript(sourceJS, {
-        jsx: false,
-        range: false,
-        loc: false,
-        tolerant: true,
-        tokens: false,
-        comment: false
-    })
+	console.log("esprima ast:", ast);
 
-  console.log("esprima ast:", ast);
+	estraverse.replace(ast, {
+	  leave(node, parent) {
+	  }
+	});
+	console.log("estraverse ast:", ast);
 
-  estraverse.replace(ast, {
-    leave(node, parent) {
-    }
-  });
-  console.log("estraverse ast:", ast);
+	let sourceOutput = escodegen.generate(ast, {
+          format: escodegen.FORMAT_MINIFY
+	});
+	console.log("escodegen output:", sourceOutput);
 
-  let sourceOutput = escodegen.generate(ast, {
-        format: escodegen.FORMAT_MINIFY
-  });
-
-  console.log("escodegen output:", sourceOutput);
+	var dstCode = document.getElementById('dstArea');
+	dstCode.innerHTML=sourceOutput;
+    });
 }
 
 </script>
