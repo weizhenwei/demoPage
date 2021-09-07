@@ -8,7 +8,13 @@
 <div>
     <input id="text" type="text" value="Runoob" />
     <button id="sendMessage" >发送消息</button>
+
 </div>
+   
+<div>  
+    <button id="createWindow" >创建窗口</button>
+</div>
+   
 <iframe
         id="receiver"
         src="https://weizhenwei.github.io/demoPage/postMessage_receiver.html"
@@ -18,12 +24,23 @@
 </iframe>
 <script>
 window.onload = function() {
+    var newWindow = null;
+    var windowButton = document.getElementById('createWindow');
+    windowButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        newWindow = window.open("https://weizhenwei.github.io/demoPage/postMessage_receiver.html");
+    });
+    
     var receiver = document.getElementById('receiver').contentWindow;
     var btn = document.getElementById('sendMessage');
     btn.addEventListener('click', function (e) {
         e.preventDefault();
         var val = document.getElementById('text').value;
         receiver.postMessage("Hello "+val+"！", "https://weizhenwei.github.io");
+        
+        if (newWindow) {
+            receiver.postMessage("Hello "+val+"！", "https://weizhenwei.github.io");
+        }
     });
 }
 </script>
