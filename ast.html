@@ -13,7 +13,10 @@
 <P>source code:</p>
 <div>
 <textarea id="srcArea" style="width:400px; height:300px;">
-var a = 1; console.log(a);
+import ('https://static01.nyt.com/newsgraphics/2021/08/25/right-rail-header/b2d5c97936aa7e89d7b351d41f2bf789cbc5f44d/build/js/freebird.js');
+
+var a = 1 + 1;
+console.log(a);
 </textarea>
 </div>
 
@@ -33,22 +36,18 @@ window.onload = function() {
         var srcCode = document.getElementById('srcArea').value;
 	console.log("sourceJS:", srcCode);
 
-	    if (0) {
-		    
-	let ast = esprima.parseScript(srcCode, {
-          jsx: false,
-          range: false,
-          loc: false,
-          tolerant: true,
-          tokens: false,
-          comment: false
-	})
-	}
+	// let ast = esprima.parseScript(srcCode, {
+        //   jsx: false,
+        //   range: false,
+        //   loc: false,
+        //   tolerant: true,
+        //   tokens: false,
+        //   comment: false
+	// })
+	// console.log("esprima ast:", ast);
 
         let ast = acorn.parse(srcCode, {ecmaVersion: 2020})
         console.log("acorn ast:", ast);
-
-	console.log("esprima ast:", ast);
 
 	estraverse.replace(ast, {
 	  leave(node, parent) {
