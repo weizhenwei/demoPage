@@ -31,6 +31,39 @@
 </div>
 
 <script type="text/javascript">
+window.onload = function() {
+  const esprima = require('esprima');
+  const estraverse = require('estraverse');
+  const escodegen = require('escodegen');
+
+  let sourceJS = "var a = 1; console.log(a);";
+
+  console.log("sourceJS:", sourceJS);
+
+  let ast = esprima.parseScript(sourceJS, {
+        jsx: false,
+        range: false,
+        loc: false,
+        tolerant: true,
+        tokens: false,
+        comment: false
+    })
+
+  console.log("esprima ast:", ast);
+
+  estraverse.replace(ast, {
+    leave(node, parent) {
+    }
+  });
+  console.log("estraverse ast:", ast);
+
+  let sourceOutput = escodegen.generate(ast, {
+        format: escodegen.FORMAT_MINIFY
+  });
+
+  console.log("escodegen output:", sourceOutput);
+}
+
 </script>
 </body>
 </html>
