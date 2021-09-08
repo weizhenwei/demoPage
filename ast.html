@@ -5,12 +5,10 @@
 </head>
 <body>
 
-<!--
 <script src="https://weizhenwei.github.io/demoPage/ast/escodegen.browser.2.0.0.js"></script>
 <script src="https://weizhenwei.github.io/demoPage/ast/estraverse.browser.5.2.0.js"></script>
 <script src="https://weizhenwei.github.io/demoPage/ast/esprima.browser.4.0.1.js"></script>
 <script src="https://weizhenwei.github.io/demoPage/ast/acorn.browser.8.4.1.js"></script>
--->
 	
 <P>source code:</p>
 <div>
@@ -88,20 +86,21 @@ window.onload = function() {
 	// })
 	// console.log("esprima ast:", ast);
 
-        // let ast = acorn.parse(srcCode, {ecmaVersion: 2020})
-        // console.log("acorn ast:", ast);
+        let ast = acorn.parse(srcCode, {ecmaVersion: 2020})
+        console.log("acorn ast:", ast);
 
-	// estraverse.replace(ast, {
-	//   leave(node, parent) {
-	// 	console.log("node in traverse:", node);
-	//   }
-	// });
-	// console.log("estraverse ast:", ast);
+	estraverse.replace(ast, {
+	  leave(node, parent) {
+		console.log("node in traverse:", node);
+	  }
+	});
+	console.log("estraverse ast:", ast);
 
-	// let sourceOutput = escodegen.generate(ast, {
-        //   format: escodegen.FORMAT_MINIFY
-	// });
-	// console.log("escodegen output:", sourceOutput);
+	let sourceOutput = escodegen.generate(ast, {
+          format: escodegen.FORMAT_DEFAULT,
+	  parse: acorn.parse
+	});
+	console.log("escodegen output:", sourceOutput);
 
 	var dstCode = document.getElementById('dstArea');
 	dstCode.value=sourceOutput;
