@@ -97,7 +97,7 @@ window.onload = function() {
 	console.log("estraverse ast:", ast);
 
 	let sourceOutput = escodegen.generate(ast, {
-          format: escodegen.FORMAT_DEFAULT,
+          format: escodegen.FORMAT_DEFAULTS,
 	  parse: acorn.parse
 	});
 	console.log("escodegen output:", sourceOutput);
