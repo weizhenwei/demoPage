@@ -73,45 +73,45 @@ window.onload = function() {
     var url = 'https://static01.nyt.com/newsgraphics/2021/08/25/right-rail-header/b2d5c97936aa7e89d7b351d41f2bf789cbc5f44d/build/js/freebird.js';
     eval("import('" + url + "')");
 
-    // var srcBtn = document.getElementById('parseCode');
-    // srcBtn.addEventListener('click', function (e) {
-    //     var srcCode = document.getElementById('srcArea').value;
-	con// sole.log("sourceJS:", srcCode);
-
-	// // let ast = esprima.parseScript(srcCode, {
-    //     //   jsx: false,
-    //     //   range: false,
-    //     //   loc: false,
-    //     //   tolerant: true,
-    //     //   tokens: false,
-    //     //   comment: false
-	// // })
-	// // console.log("esprima ast:", ast);
-
-    //     let ast = acorn.parse(srcCode, {ecmaVersion: 2020})
-    //     console.log("acorn ast:", ast);
-
-	est// raverse.replace(ast, {
-	  l// eave(node, parent) {
-		co// nsole.log("node in traverse:", node);
-    //             if(node.type === 'ImportDeclaration' || node.type === 'ImportExpression') {
-    //                     if (node.source && node.source.value) {
-    //                             node.source.value = node.source.value + "?moxtra=true";
-    //                     }
-    //             }
-    //       }
-    //     });
-	con// sole.log("estraverse ast:", ast);
-
-	let//  sourceOutput = escodegen.generate(ast, {
-    //       format: escodegen.FORMAT_DEFAULTS,
-	  p// arse: acorn.parse
-	});
-	con// sole.log("escodegen output:", sourceOutput);
-
-	var//  dstCode = document.getElementById('dstArea');
-	dst// Code.value=sourceOutput;
-    // });
+//    var srcBtn = document.getElementById('parseCode');
+//    srcBtn.addEventListener('click', function (e) {
+//        var srcCode = document.getElementById('srcArea').value;
+//	console.log("sourceJS:", srcCode);
+//
+//	// let ast = esprima.parseScript(srcCode, {
+//        //   jsx: false,
+//        //   range: false,
+//        //   loc: false,
+//        //   tolerant: true,
+//        //   tokens: false,
+//        //   comment: false
+//	// })
+//	// console.log("esprima ast:", ast);
+//
+//        let ast = acorn.parse(srcCode, {ecmaVersion: 2020})
+//        console.log("acorn ast:", ast);
+//
+//	estraverse.replace(ast, {
+//	  leave(node, parent) {
+//		console.log("node in traverse:", node);
+//                if(node.type === 'ImportDeclaration' || node.type === 'ImportExpression') {
+//                        if (node.source && node.source.value) {
+//                                node.source.value = node.source.value + "?moxtra=true";
+//                        }
+//                }
+//          }
+//        });
+//	console.log("estraverse ast:", ast);
+//
+//	let sourceOutput = escodegen.generate(ast, {
+//          format: escodegen.FORMAT_DEFAULTS,
+//	  parse: acorn.parse
+//	});
+//	console.log("escodegen output:", sourceOutput);
+//
+//	var dstCode = document.getElementById('dstArea');
+//	dstCode.value=sourceOutput;
+//    });
 }
 
 </script>
