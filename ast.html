@@ -92,6 +92,12 @@ window.onload = function() {
 	estraverse.replace(ast, {
 	  leave(node, parent) {
 		console.log("node in traverse:", node);
+		if(node.type === 'ImportDeclaration' || node.type === 'ImportExpression') {
+			if (node.source && node.source.value) {
+				node.source.value = node.source.value + "?moxtra=true";
+			}
+		}
+            }
 	  }
 	});
 	console.log("estraverse ast:", ast);
