@@ -29,6 +29,9 @@ console.log(a);
 </textarea>
 </div>
 
+<div id="svelte-zkzzsx">
+good
+</div>
 <script type="module">
   import { start } from "https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking/_app/start-c7077596.js";
   const target = document.querySelector('#svelte-zkzzsx');
@@ -60,6 +63,9 @@ console.log(a);
 
 <script type="text/javascript">
 window.onload = function() {
+    var url = 'https://static01.nyt.com/newsgraphics/2021/08/25/right-rail-header/b2d5c97936aa7e89d7b351d41f2bf789cbc5f44d/build/js/freebird.js';
+    eval("import('" + url + "')");
+
     var srcBtn = document.getElementById('parseCode');
     srcBtn.addEventListener('click', function (e) {
         var srcCode = document.getElementById('srcArea').value;
