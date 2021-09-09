@@ -31,7 +31,6 @@ console.log(a);
 </textarea>
 </div>
 
-<!--
 <div id="svelte-zkzzsx">
 good
 </div>
@@ -39,81 +38,78 @@ good
   // import { reallyReallyLongModuleMemberName as shortName, anotherLongModuleName as short } from '/modules/my-module.js';
   // import { anotherLongModuleName } from './modules/my-module.js'
   import { start } from "https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking/_app/start-c7077596.js";
-  // import { start } from "https://weizhenwei.github.io/demoPage/start-c7077596.js";
   const target = document.querySelector('#svelte-zkzzsx');
   target.removeAttribute('id');
   start({
-	target,
-	paths: {"base":"/interactive/2021","assets":"https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking"},
-	session: {},
-	host: location.host,
-	route: false,
-	spa: false,
-	trailing_slash: "never",
-	hydrate: {
-		status: 200,
-		error: null,
-		nodes: [
-			import("https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking/_app/pages/__layout.svelte-b4982ce8.js"),
-			import("https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking/_app/pages/embeds/[type]-dashboard/index.html.svelte-c20d527a.js")
-		],
-		page: {
-			host: location.host, // TODO this is redundant
-			path: "/embeds/spotlight-dashboard.html",
-			query: new URLSearchParams(""),
-			params: {"type":"spotlight"}
-		}
-	}
+    target,
+    paths: {"base":"/interactive/2021","assets":"https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking"},
+    session: {},
+    host: location.host,
+    route: false,
+    spa: false,
+    trailing_slash: "never",
+    hydrate: {
+      status: 200,
+      error: null,
+      nodes: [
+        import("https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking/_app/pages/__layout.svelte-b4982ce8.js"),
+        import("https://static01.nyt.com/newsgraphics/2021/coronavirus-tracking/_app/pages/embeds/[type]-dashboard/index.html.svelte-c20d527a.js")
+      ],
+      page: {
+        host: location.host, // TODO this is redundant
+        path: "/embeds/spotlight-dashboard.html",
+        query: new URLSearchParams(""),
+        params: {"type":"spotlight"}
+      }
+    }
   });
 </script>
 
 <script>document.write('<script src="https://code.jquery.com/jquery-3.5.1.min.js"><\/script>')</script>
--->
 
 <script type="text/javascript">
 window.onload = function() {
-    var url = 'https://static01.nyt.com/newsgraphics/2021/08/25/right-rail-header/b2d5c97936aa7e89d7b351d41f2bf789cbc5f44d/build/js/freebird.js';
-    eval("import('" + url + "')");
+  var url = 'https://static01.nyt.com/newsgraphics/2021/08/25/right-rail-header/b2d5c97936aa7e89d7b351d41f2bf789cbc5f44d/build/js/freebird.js';
+  eval("import('" + url + "')");
 
-//    var srcBtn = document.getElementById('parseCode');
-//    srcBtn.addEventListener('click', function (e) {
-//        var srcCode = document.getElementById('srcArea').value;
-//	console.log("sourceJS:", srcCode);
-//
-//	// let ast = esprima.parseScript(srcCode, {
-//        //   jsx: false,
-//        //   range: false,
-//        //   loc: false,
-//        //   tolerant: true,
-//        //   tokens: false,
-//        //   comment: false
-//	// })
-//	// console.log("esprima ast:", ast);
-//
-//        let ast = acorn.parse(srcCode, {ecmaVersion: 2020})
-//        console.log("acorn ast:", ast);
-//
-//	estraverse.replace(ast, {
-//	  leave(node, parent) {
-//		console.log("node in traverse:", node);
-//                if(node.type === 'ImportDeclaration' || node.type === 'ImportExpression') {
-//                        if (node.source && node.source.value) {
-//                                node.source.value = node.source.value + "?moxtra=true";
-//                        }
-//                }
-//          }
-//        });
-//	console.log("estraverse ast:", ast);
-//
-//	let sourceOutput = escodegen.generate(ast, {
-//          format: escodegen.FORMAT_DEFAULTS,
-//	  parse: acorn.parse
-//	});
-//	console.log("escodegen output:", sourceOutput);
-//
-//	var dstCode = document.getElementById('dstArea');
-//	dstCode.value=sourceOutput;
-//    });
+  var srcBtn = document.getElementById('parseCode');
+  srcBtn.addEventListener('click', function (e) {
+      var srcCode = document.getElementById('srcArea').value;
+      console.log("sourceJS:", srcCode);
+      
+      // let ast = esprima.parseScript(srcCode, {
+              //   jsx: false,
+              //   range: false,
+              //   loc: false,
+              //   tolerant: true,
+              //   tokens: false,
+              //   comment: false
+      // })
+      // console.log("esprima ast:", ast);
+      
+      let ast = acorn.parse(srcCode, {ecmaVersion: 2020})
+      console.log("acorn ast:", ast);
+      estraverse.replace(ast, {
+        leave(node, parent) {
+          console.log("node in traverse:", node);
+          if(node.type === 'ImportDeclaration' || node.type === 'ImportExpression') {
+            if (node.source && node.source.value) {
+              node.source.value = node.source.value + "?moxtra=true";
+            }
+          }
+        }
+      });
+      console.log("estraverse ast:", ast);
+
+      let sourceOutput = escodegen.generate(ast, {
+        format: escodegen.FORMAT_DEFAULTS,
+      parse: acorn.parse
+      });
+      console.log("escodegen output:", sourceOutput);
+      
+      var dstCode = document.getElementById('dstArea');
+      dstCode.value=sourceOutput;
+  });
 }
 
 </script>
