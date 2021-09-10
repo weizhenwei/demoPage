@@ -293,7 +293,18 @@ function removeiFrame() {
 </div>
 -->
 
-<p> ----------------------------------this is divide line------------------------------------------------ </p>	
-<iframe src="https://baz.grouphour.com/client/native/blank.html" width= 800 height = 600> </iframe>
+<p> ----------------------------------this is divide line------------------------------------------------ </p>
+<script>	
+function replaceIframeURL() {
+    var iframe = document.getElementById("iframe");
+    var iframeWindow = iframe.contentWindow;
+    iframeWindow.location.replace("https://cn.bing.com");
+}
+</script>
+<button style="cursor:pointer;"
+	onclick="replaceIframeURL()">
+	replace iframe url
+        </button></br>
+<iframe src="https://baz.grouphour.com/client/native/blank.html" id="iframe" width= 800 height = 600> </iframe>
     </body>
 </html>
