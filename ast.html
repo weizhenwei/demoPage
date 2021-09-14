@@ -115,7 +115,9 @@ window.onload = function() {
   t.setAttribute("async", "async"),
   t.onload = function() {
     var t, n;
-    e.oneTap = "undefined" != typeof google && (null === (t = google) || void 0 === t || null === (n = t.accounts) || void 0 === n ? void 0 : n.id) || !1,
+    // e.oneTap = "undefined" != typeof google && (null === (t = google) || void 0 === t || null === (n = t.accounts) || void 0 === n ? void 0 : n.id) || !1,
+    e.oneTap = google.accounts.id;
+
     // e.setState({
     //   scriptLoaded: !0
     // })
