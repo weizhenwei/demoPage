@@ -35,12 +35,14 @@
   </textarea>
 </div>
 
+<!--
 <script
   type="text/javascript"
   src="https://accounts.google.com/gsi/client"
   id="oneTapScript"
   async="async">
 </script>
+-->
 
 <div id="svelte-zkzzsx">
   good
@@ -79,9 +81,54 @@
 <script>document.write('<script src="https://code.jquery.com/jquery-3.5.1.min.js"><\/script>')</script>
 
 <script type="text/javascript">
+
+function ee(e) {
+  var t = e.tracking
+    , n = e.pageType
+    , r = e.prompt
+    , o = {
+      event: "impression",
+      eventData: {
+          pagetype: "[".concat(n, "]")
+      },
+      module: {
+          name: r,
+          context: "one_tap_auth" === r ? "masthead" : "",
+          label: "vi",
+          region: "[Google]"
+      }
+  };
+  t.trackEvent(o)
+}
+
+
+
 window.onload = function() {
   var url = 'https://static01.nyt.com/newsgraphics/2021/08/25/right-rail-header/b2d5c97936aa7e89d7b351d41f2bf789cbc5f44d/build/js/freebird.js';
   eval("import('" + url + "')");
+
+  var e = !1;
+  var t = document.createElement("script");
+  t.type = "text/javascript",
+  t.src = "https://accounts.google.com/gsi/client",
+  t.id = "oneTapScript",
+  t.setAttribute("async", "async"),
+  t.onload = function() {
+    var t, n;
+    e.oneTap = "undefined" != typeof google && (null === (t = google) || void 0 === t || null === (n = t.accounts) || void 0 === n ? void 0 : n.id) || !1,
+    e.setState({
+      scriptLoaded: !0
+    })
+    
+    e.oneTap.initialize({
+      client_id: e.clientId,
+      callback: () => {},
+      cancel_on_tap_outside: !1,
+      prompt_parent_id: "google-one-tap-prompt"
+    });
+    e.oneTap.prompt(null);
+  };
+  document.getElementsByTagName("head")[0].appendChild(t);
 
   // var srcBtn = document.getElementById('parseCode');
   // srcBtn.addEventListener('click', function (e) {
