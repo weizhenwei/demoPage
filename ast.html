@@ -116,9 +116,9 @@ window.onload = function() {
   t.onload = function() {
     var t, n;
     e.oneTap = "undefined" != typeof google && (null === (t = google) || void 0 === t || null === (n = t.accounts) || void 0 === n ? void 0 : n.id) || !1,
-    e.setState({
-      scriptLoaded: !0
-    })
+    // e.setState({
+    //   scriptLoaded: !0
+    // })
     
     e.oneTap.initialize({
       client_id: e.clientId,
