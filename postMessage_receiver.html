@@ -20,7 +20,7 @@ window.onload = function() {
         messageEle.innerHTML = "从"+ e.origin +"收到消息： " + e.data;
 
         var sender = e.source;
-        sender.postMessage("Hello sender, I am receiver", "https://weizhenwei.github.io");
+        sender.postMessage("Hello sender, I am receiver to get " + e.data, "https://weizhenwei.github.io");
     });
 }
 </script>
