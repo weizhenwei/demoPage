@@ -10,6 +10,7 @@ Hello World!
 </div>
 <script>
 window.onload = function() {
+    var sender = null;
     var messageEle = document.getElementById('recMessage');
     window.addEventListener('message', function (e) {  // 监听 message 事件
         // console.log("receive message:", e);
@@ -18,9 +19,11 @@ window.onload = function() {
         //    return;
         // }
         messageEle.innerHTML = "从"+ e.origin +"收到消息： " + e.data;
-
-        var sender = e.source;
-        sender.postMessage("Hello sender, I am receiver to get " + e.data, "https://weizhenwei.github.io");
+        if (Object.prototype.toString.call(e.data) === '[object Window') {
+            sender = e.data;
+        } else if (sender) {
+            sender.postMessage("Hello sender, I am receiver to get " + e.data, "https://weizhenwei.github.io");
+        }
     });
 }
 </script>
