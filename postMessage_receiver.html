@@ -19,11 +19,8 @@ window.onload = function() {
         //    return;
         // }
         messageEle.innerHTML = "从"+ e.origin +"收到消息： " + e.data;
-        if (Object.prototype.toString.call(e.data) === '[object Window') {
-            sender = e.data;
-        } else if (sender) {
-            sender.postMessage("Hello sender, I am receiver to get " + e.data, "https://weizhenwei.github.io");
-        }
+
+        top.postMessage("Hello sender, I am receiver to get " + e.data, "https://weizhenwei.github.io");
     });
 }
 </script>
