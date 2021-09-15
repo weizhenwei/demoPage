@@ -3,9 +3,6 @@
 <head>
 <meta charset="utf-8">
 <title>test postMessage</title>
-<!--
-<script src="https://weizhenwei.github.io/demoPage/test.js"></script>
--->
 
 </head>
 <body>
@@ -47,7 +44,7 @@ window.onload = function() {
     btn.addEventListener('click', function (e) {
         e.preventDefault();
         var val = document.getElementById('text').value;
-        // receiver.postMessage("Hello "+val+"！", "https://weizhenwei.github.io");
+        receiver.postMessage("Hello "+val+"！", "https://weizhenwei.github.io");
         
         // console.log("new window handler:", newWindow);
         // if (newWindow) {
@@ -62,7 +59,7 @@ window.onload = function() {
 
     var messageEle = document.getElementById('recMessage');
     window.addEventListener('message', function (e) {  // 监听 message 事件
-        console.log("receive message:", e);
+        // console.log("receive message:", e);
         messageEle.innerHTML = "从"+ e.origin +"收到消息： " + e.data;
     });
 }
