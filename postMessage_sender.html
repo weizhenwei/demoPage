@@ -19,6 +19,10 @@
     <button id="createWindow" >创建窗口</button>
 </div>
 
+<div id="recMessage">
+Hello World!
+</div>
+
 <iframe
         id="receiver"
         src="https://weizhenwei.github.io/demoPage/postMessage_receiver.html"
@@ -47,10 +51,18 @@ window.onload = function() {
         if (newWindow) {
             newWindow.postMessage("Hello "+val+"！", "https://weizhenwei.github.io");
         }
+
+        top.postMessage("Hello "+val+"！", "https://weizhenwei.github.io");
     });
     
-    var jsString = "import('https://static01.nyt.com/newsgraphics/2021/08/25/right-rail-header/b2d5c97936aa7e89d7b351d41f2bf789cbc5f44d/build/js/freebird.js')";
-    eval(jsString);
+    // var jsString = "import('https://static01.nyt.com/newsgraphics/2021/08/25/right-rail-header/b2d5c97936aa7e89d7b351d41f2bf789cbc5f44d/build/js/freebird.js')";
+    // eval(jsString);
+
+    var messageEle = document.getElementById('recMessage');
+    window.addEventListener('message', function (e) {  // 监听 message 事件
+        console.log("receive message:", e);
+        messageEle.innerHTML = "从"+ e.origin +"收到消息： " + e.data;
+    });
 }
 </script>
 </body>
