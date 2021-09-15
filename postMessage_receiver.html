@@ -12,7 +12,7 @@ Hello World!
 window.onload = function() {
     var messageEle = document.getElementById('recMessage');
     window.addEventListener('message', function (e) {  // 监听 message 事件
-        // console.log("receive message:", e);
+        console.log("receive message:", e);
         // alert(e.origin);
         // if (e.origin !== "https://weizhenwei.github.io") {  // 验证消息来源地址
         //    return;
