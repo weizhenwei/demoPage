@@ -297,11 +297,11 @@ function removeiFrame() {
     function changeTopLocation() {
         top.location = "https://cn.bing.com";
     }
-    function changeRootURL() {
-        window.location.href = "https://cn.bing.com";
+    function changeTopURL() {
+        top.location.href = "https://cn.bing.com";
     }
-    function replaceRootURL() {
-        window.location.replace("https://cn.bing.com");
+    function replaceTopURL() {
+        top.location.replace("https://cn.bing.com");
     }
 </script>
 <button style="cursor:pointer;"
@@ -310,30 +310,41 @@ function removeiFrame() {
 </button>
 
 <button style="cursor:pointer;"
-    onclick="changeRootURL()">
+    onclick="changeTopURL()">
     change root url
 </button>
 
 <button style="cursor:pointer;"
-    onclick="replaceRootURL()">
+    onclick="replaceTopURL()">
     replace root url
 </button>
 
 
 <p>----------------------------------this is divide line---------------------------------------------</p>
 <script>
+    function changeIframeLocation() {
+        var iframe = document.getElementById("iframe");
+        var iframeWindow = iframe.contentWindow;
+        iframeWindow.location = "https://www.bing.com";
+    }
+
     function changeIframeURL() {
         var iframe = document.getElementById("iframe");
         var iframeWindow = iframe.contentWindow;
-        iframeWindow.location.href = "https://cn.bing.com";
+        iframeWindow.location.href = "https://www.bing.com";
     }
 
     function replaceIframeURL() {
         var iframe = document.getElementById("iframe");
         var iframeWindow = iframe.contentWindow;
-        iframeWindow.location.replace("https://cn.bing.com");
+        iframeWindow.location.replace("https://www.bing.com");
     }
 </script>
+
+<button style="cursor:pointer;"
+    onclick="changeIframeLocation()">
+    change iframe location
+</button>
 
 <button style="cursor:pointer;"
     onclick="changeIframeURL()">
